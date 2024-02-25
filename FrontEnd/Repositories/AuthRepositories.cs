@@ -85,7 +85,6 @@ namespace FrontEnd.Repositories
 
                 return null;
             }
-
         }
 
         public bool IsEmailExists(string c_email)
