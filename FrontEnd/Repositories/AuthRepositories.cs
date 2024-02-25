@@ -11,11 +11,9 @@ namespace FrontEnd.Repositories
     public class AuthRepositories : IAuthRepositories
     {
         private readonly string conn;
-        // private readonly NpgsqlConnection conn;
         public AuthRepositories(IConfiguration configuration)
         {
             conn = configuration.GetConnectionString("DefaultConnection");
-            // conn = new NpgsqlConnection(_conn);
         }
 
         public List<EmployeeModel> GetAllCity()
