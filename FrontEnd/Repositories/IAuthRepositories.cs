@@ -8,12 +8,8 @@ namespace FrontEnd.Repositories
 {
     public interface IAuthRepositories
     {
-        void Register(EmployeeModel register);
-        List<EmployeeModel> GetAllData();
-        void DeleteData(int id);
-        EmployeeModel ShowData(int id);
-        bool UpdateData(EmployeeModel updatedRecord);
-        List<EmployeeModel> GetAllDept();
-        List<EmployeeModel> GetAllCity();
+        void Register(AuthModel register);
+        AuthModel Login(AuthModel login);
+        bool IsEmailExists(string c_email);
     }
 }
