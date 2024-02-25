@@ -1,0 +1,29 @@
+@model AuthModel;
+@{
+    ViewData["Title"] = "Register Form";
+}
+<h1>Register Form</h1>
+<form asp-action="Register" method="post">
+    
+    
+    <div class="form-group">
+        <label asp-for="c_name" class="control-label">Name</label>
+        <input asp-for="c_name" class="form-control" />
+        <span asp-validation-for="c_name" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="c_email" class="control-label">Email</label>
+        <input asp-for="c_email" class="form-control" />
+        <span asp-validation-for="c_email" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="c_password" class="control-label">Password</label>
+        <input asp-for="c_password" class="form-control" />
+        <span asp-validation-for="c_password" class="text-danger"></span>
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
