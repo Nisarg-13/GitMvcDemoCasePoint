@@ -436,19 +436,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\patel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
+      "projectUniqueName": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
       "projectName": "FrontEnd",
-      "projectPath": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\obj\\",
+      "projectPath": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
+      "packagesPath": "C:\\Users\\patel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\patel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -496,7 +496,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
       }
     }
   }

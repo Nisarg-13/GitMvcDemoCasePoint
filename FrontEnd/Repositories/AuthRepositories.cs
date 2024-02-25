@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using FrontEnd.Models;
+using Npgsql;
 
 namespace FrontEnd.Repositories
 {
-    public class AuthRepositories
+    public class AuthRepositories : IAuthRepositories
     {
         private readonly string conn;
         // private readonly NpgsqlConnection conn;
@@ -15,11 +18,11 @@ namespace FrontEnd.Repositories
             // conn = new NpgsqlConnection(_conn);
         }
 
-        public List<AuthModel> GetAllCity()
+        public List<EmployeeModel> GetAllCity()
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
-                List<AuthModel> cities = new List<AuthModel>();
+                List<EmployeeModel> cities = new List<EmployeeModel>();
                 try
                 {
                     _conn.Open();
@@ -29,7 +32,7 @@ namespace FrontEnd.Repositories
                     {
                         while (reader.Read())
                         {
-                            AuthModel city = new AuthModel
+                            EmployeeModel city = new EmployeeModel
                             {
                                 c_cityid = Convert.ToInt32(reader["c_cityid"]),
                                 c_cityname = reader["c_cityname"].ToString(),
@@ -50,9 +53,9 @@ namespace FrontEnd.Repositories
             }
         }
 
-        public List<AuthModel> GetAllDept()
+        public List<EmployeeModel> GetAllDept()
         {
-            List<AuthModel> dept = new List<AuthModel>();
+            List<EmployeeModel> dept = new List<EmployeeModel>();
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
                 try
@@ -64,7 +67,7 @@ namespace FrontEnd.Repositories
                     {
                         while (reader.Read())
                         {
-                            AuthModel dt = new AuthModel
+                            EmployeeModel dt = new EmployeeModel
                             {
                                 c_departmentid = Convert.ToInt32(reader["c_departmentid"]),
                                 c_deptname = reader["c_deptname"].ToString(),
@@ -85,7 +88,7 @@ namespace FrontEnd.Repositories
             }
         }
 
-        public void Register(AuthModel register)
+        public void Register(EmployeeModel register)
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
@@ -110,12 +113,12 @@ namespace FrontEnd.Repositories
             }
         }
 
-        public List<AuthModel> GetAllData()
+        public List<EmployeeModel> GetAllData()
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
 
-                var records = new List<AuthModel>();
+                var records = new List<EmployeeModel>();
 
                 _conn.Open();
 
@@ -126,7 +129,7 @@ namespace FrontEnd.Repositories
 
                 while (reader.Read())
                 {
-                    var record = new AuthModel
+                    var record = new EmployeeModel
                     {
                         c_empid = Convert.ToInt32(reader["c_empid"]),
                         c_name = reader["c_name"].ToString(),
@@ -148,7 +151,7 @@ namespace FrontEnd.Repositories
             }
         }
 
-        public AuthModel ShowData(int id)
+        public EmployeeModel ShowData(int id)
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
@@ -161,7 +164,7 @@ namespace FrontEnd.Repositories
 
                 using var reader = command.ExecuteReader();
 
-                var record = new AuthModel();
+                var record = new EmployeeModel();
 
                 if (reader.Read())
                 {
@@ -181,11 +184,10 @@ namespace FrontEnd.Repositories
             }
         }
 
-        public bool UpdateData(AuthModel updatedRecord)
+        public bool UpdateData(EmployeeModel updatedRecord)
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
-
                 try
                 {
                     _conn.Open();

@@ -2,17 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FrontEnd.Models;
 
 namespace FrontEnd.Repositories
 {
     public interface IAuthRepositories
     {
-        void Register(AuthModel register);
-        List<AuthModel> GetAllData();
+        void Register(EmployeeModel register);
+        List<EmployeeModel> GetAllData();
         void DeleteData(int id);
-        AuthModel ShowData(int id);
-        bool UpdateData(AuthModel updatedRecord);
-        List<AuthModel> GetAllDept();
-        List<AuthModel> GetAllCity();
+        EmployeeModel ShowData(int id);
+        bool UpdateData(EmployeeModel updatedRecord);
+        List<EmployeeModel> GetAllDept();
+        List<EmployeeModel> GetAllCity();
     }
 }
