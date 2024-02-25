@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj": {}
+    "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj": {
+    "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
+        "projectUniqueName": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
         "projectName": "FrontEnd",
-        "projectPath": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
-        "packagesPath": "C:\\Users\\patel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\patel\\Desktop\\Internship\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\obj\\",
+        "projectPath": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\FrontEnd.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\casepoint\\ConsoleProgram\\GitMVC\\GitMvcDemoCasePoint\\FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\patel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -56,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }
