@@ -12,7 +12,8 @@ namespace FrontEnd.Models
                 public string? c_email { get; set; }
                 public string? c_gender { get; set; }
                 public DateTime c_dob { get; set; }
-                public string? c_hobby { get; set; }
+        public List<string> c_hobby { get; set; } = new List<string>();
+                
                 public string? c_password { get; set; }
                 public string? c_photo { get; set; }
                 public int c_cityid { get; set; }

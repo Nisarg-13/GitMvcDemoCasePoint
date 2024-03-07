@@ -90,7 +90,9 @@ namespace FrontEnd.Repositories
         {
             using (NpgsqlConnection _conn = new NpgsqlConnection(conn))
             {
-                _conn.Open();
+                try
+                {
+                    _conn.Open();
 
                 using var command = new NpgsqlCommand("Insert into t_kendoregister(c_name, c_email, c_gender, c_dob, c_hobby, c_password, c_photo, c_cityid, c_departmentid) values (@c_name, @c_email, @c_gender, @c_dob, @c_hobby, @c_password, @c_photo, @c_cityid, @c_departmentid)", _conn);
                 command.CommandType = CommandType.Text;
@@ -99,7 +101,7 @@ namespace FrontEnd.Repositories
                 command.Parameters.AddWithValue("@c_email", register.c_email);
                 command.Parameters.AddWithValue("@c_gender", register.c_gender);
                 command.Parameters.AddWithValue("@c_dob", register.c_dob);
-                command.Parameters.AddWithValue("@c_hobby", register.c_hobby);
+                command.Parameters.AddWithValue("@c_hobby", string.Join(",", register.c_hobby));
                 command.Parameters.AddWithValue("@c_password", register.c_password);
                 command.Parameters.AddWithValue("@c_photo", register.c_photo);
                 command.Parameters.AddWithValue("@c_cityid", register.c_cityid);
@@ -107,7 +109,15 @@ namespace FrontEnd.Repositories
 
                 command.ExecuteNonQuery();
 
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Error while inserting data:" +  e.Message);
+                }
+                finally{
                 _conn.Close();
+                }
+                
             }
         }
 
@@ -134,7 +144,7 @@ namespace FrontEnd.Repositories
                         c_email = reader["c_email"].ToString(),
                         c_gender = reader["c_gender"].ToString(),
                         c_dob = Convert.ToDateTime(reader["c_dob"]),
-                        c_hobby = reader["c_hobby"].ToString(),
+                        c_hobby = reader["c_hobby"].ToString().Split(',').ToList(),
                         c_password = reader["c_password"].ToString(),
                         c_photo = reader["c_photo"].ToString(),
                         c_cityname = reader["c_cityname"].ToString(),
@@ -171,7 +181,7 @@ namespace FrontEnd.Repositories
                     record.c_email = reader["c_email"].ToString();
                     record.c_gender = reader["c_gender"].ToString();
                     record.c_dob = Convert.ToDateTime(reader["c_dob"]);
-                    record.c_hobby = reader["c_hobby"].ToString();
+                    record.c_hobby = reader["c_hobby"].ToString().Split(',').ToList();
                     record.c_password = reader["c_password"].ToString();
                     record.c_photo = reader["c_photo"].ToString();
                     record.c_cityid = Convert.ToInt32(reader["c_cityid"]);
@@ -190,7 +200,7 @@ namespace FrontEnd.Repositories
                 {
                     _conn.Open();
 
-                    using var command = new NpgsqlCommand("UPDATE t_kendoregister SET c_name = @c_name, c_email = @c_email, c_gender = @c_gender, c_dob = @c_dob, c_hobby = @c_hobby, c_password = @c_password, c_photo = @c_photo, c_cityid = @c_cityid, c_departmentid = @c_departmentid WHERE c_empid = @id", _conn);
+                    using var command = new NpgsqlCommand("UPDATE t_kendoregister SET c_name = @c_name, c_email = @c_email, c_gender = @c_gender, c_dob = @c_dob, c_hobby = @c_hobby, c_photo = @c_photo, c_cityid = @c_cityid, c_departmentid = @c_departmentid WHERE c_empid = @id", _conn);
                     command.CommandType = CommandType.Text;
 
                     command.Parameters.AddWithValue("@id", updatedRecord.c_empid);
@@ -198,8 +208,7 @@ namespace FrontEnd.Repositories
                     command.Parameters.AddWithValue("@c_email", updatedRecord.c_email);
                     command.Parameters.AddWithValue("@c_gender", updatedRecord.c_gender);
                     command.Parameters.AddWithValue("@c_dob", updatedRecord.c_dob);
-                    command.Parameters.AddWithValue("@c_hobby", updatedRecord.c_hobby);
-                    command.Parameters.AddWithValue("@c_password", updatedRecord.c_password);
+                    command.Parameters.AddWithValue("@c_hobby", string.Join(",", updatedRecord.c_hobby));
                     command.Parameters.AddWithValue("@c_photo", updatedRecord.c_photo);
                     command.Parameters.AddWithValue("@c_cityid", updatedRecord.c_cityid);
                     command.Parameters.AddWithValue("@c_departmentid", updatedRecord.c_departmentid);

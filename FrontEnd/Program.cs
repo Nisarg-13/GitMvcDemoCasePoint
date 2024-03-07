@@ -7,11 +7,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IAuthRepositories, AuthRepositories>();
 builder.Services.AddSingleton<ICrudRepositories, CrudRepositories>();
 
-builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
+// builder.Services.AddSession(options => {
+//     options.IdleTimeout = TimeSpan.FromMinutes(30);
+//     options.Cookie.HttpOnly = true;
+//     options.Cookie.IsEssential = true;
+// });
 
 builder.Services.AddHttpContextAccessor();
 
@@ -28,7 +28,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseSession();
+// app.UseSession();
 
 app.UseRouting();
 

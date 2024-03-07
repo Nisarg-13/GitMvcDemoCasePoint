@@ -1,0 +1,51 @@
+@model List<EmployeeModel>;
+@{
+    ViewData["Title"] = "Employee Display";
+}
+    <a href="/Employee/EmpInsert" class="btn btn-primary">Insert Employee</a>
+
+<table class="table">
+<thead>
+<tr>
+    <th>Emp Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>gender</th>
+    <th>dob</th>
+    <th>hobby</th>
+    <th>photo</th>
+    <th>city</th>
+    <th>department</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody>
+    @foreach(var emp in Model)
+    {
+        <tr>
+         <th>@emp.c_empid</th>
+    <td>@emp.c_name</td>
+    <td>@emp.c_email</td>
+    <td>@emp.c_gender</td>
+    <td>@emp.c_dob</td>
+    <td>@string.Join(", ", emp.c_hobby)</td>
+    @* <th>@emp.c_photo</th> *@
+    <td>@if(!string.IsNullOrEmpty(emp.c_photo))
+    {
+        <img src="@Url.Content($"~/photos/{emp.c_photo}")" alt="photo" style="max-width:100px;max-height:100px;"/>
+    }
+    else
+    {
+        <span>No photos</span>
+    }
+    </td>
+    <td>@emp.c_cityname</td>
+    <td>@emp.c_deptname</td>
+    <td>
+        <a class="btn btn-info" asp-action="EmpUpdate" asp-route-id="@emp.c_empid">Update</a>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@emp.c_empid" onclick="return confirm('Are you sure you want to delete these record')">Delete</a>
+    </td>
+        </tr>
+    }
+</tbody>
+</table>

@@ -38,7 +38,7 @@ namespace FrontEnd.Controllers
             if (ModelState.IsValid)
             {
                 _authRepositories.Login(login);
-                return RedirectToAction("", "Employee");
+                return RedirectToAction("EmpDisplay", "Employee");
             }
             return View(login);
         }

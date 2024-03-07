@@ -1,0 +1,109 @@
+@model EmployeeModel;
+@{
+    ViewData["Title"] = "Employee Form";
+}
+<a href="/Employee/EmpDisplay" class="btn btn-secondary me-3 " id="forback">back</a>
+    <h3>Update Employees</h3> 
+<form asp-action="EmpUpdate" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+    <input asp-for="c_empid" class="form-control" type="hidden"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="c_name" class="control-label">Name</label>
+        <input asp-for="c_name" class="form-control" type="text" id="c_name" name="c_name" />
+        <span asp-validation-for="c_name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="c_email" class="control-label">Email</label>
+        <input asp-for="c_email" class="form-control" type="email" id="c_email" name="c_email" />
+        <span asp-validation-for="c_email" class="text-danger"></span>
+    </div>
+    <label for="exampleInputgender" class="form-label">Gender</label>
+    <div class="form-check">
+        <input class="form-check-input" asp-for="c_gender" type="radio" value="Male" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            Male
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" asp-for="c_gender" type="radio" value="Female" id="flexRadioDefault2">
+        <label class="form-check-label" for="flexRadioDefault2">
+            Female
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="c_dob" class="control-label">DOB</label>
+        <input asp-for="c_dob" class="form-control" type="date" id="c_dob" name="c_dob" />
+        <span asp-validation-for="c_dob" class="text-danger"></span>
+    </div>
+
+    <label for="c_hobby" class="form-label">Hobby</label>
+   
+      <div class="form-group">
+        @foreach (var hobby in new List<string> { "Reading", "Playing" })
+        {
+           
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="c_hobby" value="@hobby"
+                    id="flexCheck@(hobby)"
+                    checked="@(Model != null && Model.c_hobby != null && Model.c_hobby.Contains(hobby))">
+                <label class="form-check-label" for="flexCheck@(hobby)">
+                    @hobby
+                </label>
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <label asp-for="c_photo" class="control-label">Photo</label>
+        <input asp-for="c_photo" class="form-control" type="File" id="c_photo" name="c_photos" onchange="updateImagePreview('c_photo','c_photos')"/>
+        <img src="/photos/@Model.c_photo" id="c_photos" width="100">
+        <span asp-validation-for="c_photo" class="text-danger"></span>
+    </div>
+
+<div class="form-group">
+    <label for="exampleSelectCity" class="form-label">City</label>
+    <select class="form-select" asp-for="c_cityid" aria-label=" select City">
+      <option selected>Open this select menu</option>
+      @foreach (var city in (IEnumerable<SelectListItem>)ViewBag.Tasks)
+      {
+        <option value="@city.Value">@city.Text</option>
+      } this .cshtml
+    </select>
+  </div>
+
+    <div class="form-group">
+    <label for="exampleSelectDepartment" class="form-label">Department</label>
+    <select class="form-select" asp-for="c_departmentid" aria-label=" select City">
+      <option selected>Open this select menu</option>
+      @foreach (var dept in (IEnumerable<SelectListItem>)ViewBag.Tasks2)
+      {
+        <option value="@dept.Value">@dept.Text</option>
+      } this .cshtml
+    </select>
+  </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+    function updateImagePreview(inputId, previewId) {
+        var input = document.getElementById(inputId);
+        var preview = document.getElementById(previewId);
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
